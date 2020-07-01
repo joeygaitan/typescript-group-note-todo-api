@@ -1,4 +1,4 @@
-const signUpModel = require('../models/signup.js')
+const signUpModel = require('../models/signup.ts')
 
 //figure out why it was passed in the params rather the req.body
 //add three secrets
@@ -13,7 +13,7 @@ function createUser(req:any,res:any,next:any){
 
     return signUpModel.createUser(req.body.username, req.body.password)
     .then((user:any)=>{
-        console.log("here in the singup controller in the then")
+        console.log("here in the singup controller in the then",user)
         return res.status(201).send({user})
     })
     .catch((err:any)=>{

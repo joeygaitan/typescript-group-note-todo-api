@@ -26,6 +26,8 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(morgan('dev'))
 
+app.use('/signup', require('./MVC/routes/signup.ts'))
+app.use('/login', require('./MVC/routes/login.ts'))
 
 
 //initialize a simple http server
