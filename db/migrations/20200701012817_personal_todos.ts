@@ -12,7 +12,7 @@ export async function up(knex: Knex): Promise<any> {
         table.string('header');
         table.string('body');
         table.integer('container_index').notNullable();
-        table.integer('container_item_index').notNullable();
+        table.integer('container_item_index');
         table.timestamps(true,true);
         table.boolean('private');
     })

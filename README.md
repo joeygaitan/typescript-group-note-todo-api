@@ -29,6 +29,29 @@ mysql
 5. then you must run ```npm run knex migrate:latest```
 6. If you want to get the seeds use this command ./utils/reset_knex.sh (if permission denied then do chmod 775 ./utils/reset_knex.sh) 
 
+### build your own knexfile.ts
+```
+
+const path = require('path')
+const dbname: string = 'typescript_group_todo_list_api'
+
+
+
+module.exports = {
+    development: {
+        client: 'mysql',
+        connection: process.env.DATABASE_URL || {host : '127.0.0.1', user: 'sam',password:'123', database: dbname },
+        migrations: {
+            extension: "ts",
+            directory: path.join(__dirname, 'db', 'migrations')
+        },
+        seeds: {
+            extension: "ts",
+            directory: path.join(__dirname, 'db', 'seeds')
+        }
+    }
+```
+
 ### How to application running and test it with postman
 1. ```npm i```
 2. make sure you are in the same folder (directory) as the server.js file
@@ -186,8 +209,9 @@ get request user/:id
 ]
 ```
 #### update certain user information
-put request '/user/update/'
+
 ```js
+put request '/user/update/'
 {
     "username": "new_username",
     "email": "new email",
@@ -324,7 +348,7 @@ post request '/personal_todos/'
 ]
 ```
 #### update todo post route
-It is using express so it isn't a query parameters
+It is using express so it isn't a query parameter
 ```js
 put request 'personal_todos/:id'
 {	
