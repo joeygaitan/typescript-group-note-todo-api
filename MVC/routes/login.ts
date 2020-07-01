@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const loginController = require('../controllers/login')
 
-// checks if you have access
+// checks if you're still logged in constantly
 router
 .get('/token',loginController.isAuthenticated, loginController.getAuthStatus)
 
