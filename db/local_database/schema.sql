@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS typescript_group_todo_list_api;
+
+CREATE DATABASE typescript_group_todo_list_api;
