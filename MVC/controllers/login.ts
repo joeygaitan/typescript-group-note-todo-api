@@ -15,7 +15,6 @@ function isActive (username: string,bool: boolean) {
   .update({
     "active": bool
   })
-  .returning("*")
   .then((data:any)=>{
     if (data.active == true) {
       return true
@@ -54,17 +53,17 @@ function getAuthStatus(req:any,res:any,next:any) {
 }
 
 function isAuthenticated(req:any, res:any, next:any) {
-  
-    if(!req.headers['authorization']){
+  if(!req.headers.authorization){
     
-      isActive(req.claim.username,false)
-
-        return next({ status: 401, message: 'missing token' })
-    }
-
-    // const [scheme, credentials] = req.headers.authorization.split(' ')
+    isActive(req.claim.username,false)
+    
+    return next({ status: 401, message: 'missing token' })
+  }
+  
+  
+    const [scheme, credentials] = req.headers.authorization.split(' ')
     // 
-    const credentials = req.headers['authorization']
+    // const credentials = req.headers['authorization']
 
     jwt.verify(credentials, process.env.SECRET, (err:any, payload:object)=>{
     

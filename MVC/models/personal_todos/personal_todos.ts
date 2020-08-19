@@ -36,7 +36,6 @@ function addPersonalTodo (id:number,body:any) {
 
     return db('personal_todos')
     .insert(body)
-    .returning("*")
 }
 
 
@@ -68,7 +67,6 @@ function updatePersonalTodo (id:number,todo_id:number,body:any) {
             "container_index": data.container_index,
             "container_item_index": data.container_item_index
         })
-        .returning("*")
     })
     //update this to a promise.all so that you can check if it is taken or not also to check if it is taken 
 }
@@ -78,7 +76,6 @@ function removePersonalTodo ( id:number, todo_id:number) {
     .where('user_id', id)
     .where('id',todo_id)
     .del()
-    .returning("*")
 }
 
 module.exports = {

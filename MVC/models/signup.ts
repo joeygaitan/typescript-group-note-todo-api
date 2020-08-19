@@ -41,7 +41,6 @@ function createUser(username:string,password:string){
         
         return (db('users')
         .insert({username, password: hashedPassword})
-        .returning("*")
         )
     })
     .then(([data]:any)=>{
