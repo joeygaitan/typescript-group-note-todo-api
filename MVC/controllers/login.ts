@@ -48,7 +48,7 @@ function login (req:any, res:any, next:any):any {
     })
 }
 
-function getAuthStatus(req:any,res:any,next:any) {
+function getAuthStatus (req:any,res:any,next:any) {
     res.status(200).send(req.claim)
 }
 
@@ -80,7 +80,7 @@ function isAuthenticated(req:any, res:any, next:any) {
   })
 }
 
-function isSelf(req:any, res:any, next:any) {
+function isSelf (req:any, res:any, next:any) {
   if(parseInt(req.params.userId) !== req.claim.id){
     return next({ status: 401, message: 'Unauthorized please login' })
   }
