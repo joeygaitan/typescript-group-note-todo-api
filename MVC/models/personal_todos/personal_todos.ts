@@ -13,14 +13,15 @@ function getAllPersonalTodos (id:number) {
     // .rightJoin('personal_todos',`users.id`, `personal_todos.user_id`)
 }
 
-function getAllPersonalTodoControllers (id:number) {
+function getAllPersonalTodoContainers (id:number) {
     if (!id || typeof id !== "number"){
         throw {status:401, message:"user_id isn't a number or it is missing"}
     }
 
     return db('personal_todos')
+    .select('id', "header", "container_index", "private")
     .where('user_id', id)
-    .andWhere('container_item_index', 1)
+    .where('container_item_index', 1)
 }
 
 function getPersonalTodo (id:number,todo_id:number) {
@@ -90,9 +91,9 @@ function removePersonalTodo ( id:number, todo_id:number) {
 
 module.exports = {
     getAllPersonalTodos, 
+    getAllPersonalTodoContainers,
     getPersonalTodo,
     addPersonalTodo,
     updatePersonalTodo,
     removePersonalTodo,
-    getAllPersonalTodoControllers
 }

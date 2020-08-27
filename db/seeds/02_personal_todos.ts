@@ -1,5 +1,5 @@
 import * as Knex from "knex";
-
+// add start time and finish time
 export async function seed(knex: Knex): Promise<any> {
     // Deletes ALL existing entries
     return knex("personal_todos").del()
