@@ -21,6 +21,7 @@ router.put('/update',authMiddleWare.isAuthenticated, userController.updateAccoun
 // change password
 router.put('/', authMiddleWare.isAuthenticated, userController.changePassword)
 
+// change secrets
 router.put('/secrets', authMiddleWare.isAuthenticated, userModels.changeSecrets)
 
 
