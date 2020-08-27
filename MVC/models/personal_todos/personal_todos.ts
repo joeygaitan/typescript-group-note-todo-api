@@ -30,7 +30,7 @@ function getPersonalTodo (id:number,todo_id:number) {
 
     return db('personal_todos')
     .where('user_id', id)
-    .where('id',todo_id) 
+    .andWhere('id',todo_id) 
 }
 
 function addPersonalTodo (id:number,body:any) {
