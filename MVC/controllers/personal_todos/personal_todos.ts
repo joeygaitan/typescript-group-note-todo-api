@@ -16,6 +16,21 @@ function getAllPersonalTodos (req:any,res:any,next:any) {
     })
 }
 
+function getAllPersonalTodoContainers (req:any,res:any,next:any) {
+    let id = req.claim.id
+
+    if (!id) throw {status:401, message:"Unauthorized Please login"}
+
+    return personalTodosModels.getAllPersonalTodoContainers(id)
+    .then((data:any)=>{
+        if (!data) throw {status: 400, message:"data not found"}
+        res.status(200).send(data)
+    })
+    .catch((err:any)=>{
+        console.log(err, "inside the catch of the controller of the getAllPersonalTodosContainer")
+    })
+}
+
 function getPersonalTodo (req:any,res:any,next:any) {
 
     let id = req.claim.id
@@ -89,5 +104,6 @@ module.exports = {
     getPersonalTodo,
     addPersonalTodo,
     updatePersonalTodo,
-    removePersonalTodo
+    removePersonalTodo,
+    getAllPersonalTodoContainers
 }

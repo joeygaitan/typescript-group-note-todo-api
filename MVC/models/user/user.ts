@@ -9,7 +9,7 @@ function getPersonalData (id:number) {
     }
 
     return db('users')
-    .select('username','first_name','last_name', 'gender','bio', 'email')
+    .select('username','first_name','last_name', 'gender','bio', 'email', "id")
     .where('id', id)
     .first()
 }

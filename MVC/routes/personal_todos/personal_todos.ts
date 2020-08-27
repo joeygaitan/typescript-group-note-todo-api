@@ -6,6 +6,9 @@ const authMiddleWare = require('../../controllers/login')
 // get all personal todos
 router.get('/', authMiddleWare.isAuthenticated, personal_todosController.getAllPersonalTodos)
 
+// get All personal todo containers for dashboard
+router.get('/dash', authMiddleWare.isAuthenticated, personal_todosController.getAllPersonalTodoContainers)
+
 // get a personal todo
 router.get('/:id', authMiddleWare.isAuthenticated, personal_todosController.getPersonalTodo)
 

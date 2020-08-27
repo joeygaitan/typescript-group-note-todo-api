@@ -1,5 +1,8 @@
 import * as Knex from "knex";
 
+//"if container index is 1 and container item index is then that is main outside container"
+// everything else is a child container
+// where ever container item index is 1 then that is a parent?
 
 export async function up(knex: Knex): Promise<any> {
     return knex.schema.createTable('personal_todos', (table)=>{
