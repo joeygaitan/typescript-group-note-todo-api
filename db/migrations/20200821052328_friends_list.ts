@@ -6,8 +6,8 @@ export async function up(knex: Knex): Promise<any> {
         table.increments('id').primary();
         table.integer('user_id_one').unsigned().notNullable()
         table.integer('user_id_two').unsigned().notNullable()
-        table.foreign('user_id_one').references('users.id').onUpdate('CASCADE').onDelete('CASCADE');
-        table.foreign('user_id_two').references('users.id').onUpdate('CASCADE').onDelete('CASCADE');
+        table.foreign('user_id_one').references('users.id');
+        table.foreign('user_id_two').references('users.id');
         table.enu('status', ['pending', 'declined', 'accepted', 'silent_decline']);
         table.timestamps(true,true);
     })
