@@ -23,7 +23,6 @@ function getAllPersonalTodoContainers (req:any,res:any,next:any) {
 
     return personalTodosModels.getAllPersonalTodoContainers(id)
     .then((data:any)=>{
-        console.log(data)
         if (!data) throw {status: 400, message:"data not found"}
         res.status(200).send(data)
     })

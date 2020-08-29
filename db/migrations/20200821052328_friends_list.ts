@@ -1,5 +1,4 @@
 import * as Knex from "knex";
-import { table } from "console";
 
 
 export async function up(knex: Knex): Promise<any> {
