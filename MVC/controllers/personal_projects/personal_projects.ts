@@ -55,7 +55,7 @@ function updateOnePersonalProject (req:any, res:any, next:any) {
 
     return personal_projectsModels.updateOnePersonalProjectQuery(Number(req.params.id), user_id, req.body)
     .then((data:any)=>{
-
+        
         res.sendStatus(201).send(data)
     })
     .catch((err:any)=>{

@@ -29,7 +29,7 @@ app.use(morgan('dev'))
 app.use('/signup', require('./MVC/routes/signup.ts'))
 app.use('/login', require('./MVC/routes/login.ts'))
 app.use('/user', require('./MVC/routes/user/user'))
-app.use('/personal_projects', require('./MVC/routes/personal_projects/personal_project'))
+app.use('/personal_projects', require('./MVC/routes/personal_projects/'))
 
 //initialize a simple http server
 // const server = http.createServer(app)
