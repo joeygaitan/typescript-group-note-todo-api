@@ -8,11 +8,11 @@ export async function up(knex: Knex): Promise<any> {
     return knex.schema.createTable('personal_todos', (table)=>{
         table.increments('id').primary();
         
-        // table.integer('user_id').unsigned().notNullable();
+        table.integer('user_id').unsigned().notNullable();
         table.integer('board_id').unsigned().notNullable();
 
-    // // table.foreign('user_id').references('users.id');
-    table.foreign('board_id').references('todo_boards.id');
+    table.foreign('user_id').references('users.id');
+    table.foreign('board_id').references('personal_todo_boards.id');
         
         table.boolean('active').notNullable();
         table.string('start_time');
@@ -30,4 +30,3 @@ export async function up(knex: Knex): Promise<any> {
 export async function down(knex: Knex): Promise<any> {
     return knex.schema.dropTableIfExists('personal_todos');
 }
-
