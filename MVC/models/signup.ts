@@ -26,7 +26,7 @@ function getOneByEmail (email:string) {
 }
 
 //create the user
-function createUser(username:string,password:string){
+function createUser(username:string,password:string, email:string, firstname:string,lastname:string){
    //check if user is inside of users table by looking for a username. The query returns a promise and it worked
     return getOneByUserName(username)
     .then((data:any)=>{
@@ -34,7 +34,16 @@ function createUser(username:string,password:string){
             throw { status: 400, message: "Username Already exists"}
         }
         
+        
+        
         // returns promise
+        return getOneByEmail(email)
+    })
+    .then((data:any)=>{
+        if (data) {
+            throw { status: 400, message: "Email Already exists"}
+        }
+        
         return bcrypt.hash(password, 10)
     })
     .then((hashedPassword:string)=>{

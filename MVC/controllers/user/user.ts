@@ -38,8 +38,10 @@ function userSearch(req:any, res:any, next:any) {
     .then((data:any)=>{
         if (!data) throw {status:400, message:"something went wrong with the get request"}
                
-        console.log(data, "here")
         res.status(200).send(data)
+    })
+    .catch((err:any)=>{
+        console.log("failed to get search user. Maybe you miss spelled the name?", err)
     })
 }
 
