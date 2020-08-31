@@ -6,7 +6,7 @@ export async function seed(knex: Knex): Promise<any> {
         .then(() => {
             // Inserts seed entries
             return knex("personal_lists").insert([
-                { user_id:1, personal_list_board_id:1, title:"graphic card", private:true }
+                { user_id:1, project_id: 1, personal_list_board_id:1, title:"graphic card", private:true }
             ]);
         });
 };

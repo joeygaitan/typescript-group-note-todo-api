@@ -1,10 +1,11 @@
 export {}
 const db = require('../../../../db/knex')
 
-function getAllListItemsQuery(user_id:number, personal_list_board_id:number) {
+function getAllListItemsQuery(user_id:number, project_id:number, personal_list_board:number) {
     return db('personal_lists')
     .where('user_id', user_id)
-    .where('personal_list_board_id', personal_list_board_id)
+    .where('personal_list_board_id', project_id)
+    .where('project_id', project_id)
 }
 
 function getOneListItemQuery(user_id:number, personal_list_board_id:number, id:number) {
@@ -20,12 +21,13 @@ interface listItem {
     description?:string;
 }
 
-function addOneListItemQuery(user_id:number, personal_list_board_id:number,body:listItem) {
+function addOneListItemQuery(user_id:number, project_id:any, personal_list_board_id:number, body:listItem) {
 
     return db('personal_lists')
     .insert({
         user_id,
         personal_list_board_id,
+        project_id,
         private:body.private,
         title: body.title,
         description: body.description

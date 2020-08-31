@@ -5,9 +5,11 @@ export async function up(knex: Knex): Promise<any> {
     return knex.schema.createTable('personal_lists', (table)=>{
         table.increments('id').primary();
         table.integer('user_id').unsigned().notNullable();
+        table.integer('project_id').unsigned().notNullable();
         table.integer('personal_list_board_id').unsigned().notNullable();
         
         table.foreign('user_id').references('users.id');
+        table.foreign('project_id').references('personal_projects.id');
         table.foreign('personal_list_board_id').references('personal_todo_boards.id');
 
         table.boolean('private').notNullable();

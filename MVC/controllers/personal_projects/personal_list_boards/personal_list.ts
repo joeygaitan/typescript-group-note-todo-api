@@ -37,10 +37,10 @@ function addOneListItem (req:any, res:any, next:any) {
     
     if (!user_id) throw {status:401, message:"Unauthorized Please login"}
     
-    return personalListModels.addOneListItemQuery(user_id, Number(req.params.project_id), req.body)
+    return personalListModels.addOneListItemQuery(user_id, Number(req.params.project_id), Number(req.params.board_id), req.body)
     .then((data:any)=>{
 
-        res.sendStatus(201).send(data)
+        res.status(201).send(data)
     })
     .catch((err:any)=>{
         console.log("failed to add one item", err)
