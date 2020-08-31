@@ -32,7 +32,7 @@ function addOneListItemQuery(user_id:number, personal_list_board_id:number,body:
     })
 }
 
-function updateOneListItem (user_id:number, personal_list_board_id:number, id:number, body:listItem) {
+function updateOneListItemQuery (user_id:number, personal_list_board_id:number, id:number, body:listItem) {
     return getOneListItemQuery(user_id, personal_list_board_id, id)
     .then((data:any)=>{
 
@@ -61,5 +61,6 @@ module.exports = {
     getAllListItemsQuery,
     getOneListItemQuery,
     addOneListItemQuery,
-    updateOneListItem
+    updateOneListItemQuery,
+    removeOneListItemQuery
 }
