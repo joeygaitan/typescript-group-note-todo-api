@@ -4,7 +4,8 @@ const db = require('../../../../db/knex')
 function getAllListBoardsQuery(user_id:number,project_id:number) {
 
     return db('personal_list_boards')
-    .where('project_id', project_id)
+    .where('personal_project_id', project_id)
+    .where('user_id', user_id)
 }
 
 function getOneListBoardQuery(user_id:number, project_id:number, board_id:number) {
