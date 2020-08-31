@@ -3,7 +3,7 @@ const router = require('express').Router();
 
 const authMiddleWare = require('../../../controllers/login')
 
-const personalListBoardController = require('../../../controllers/personal_projects/personal_list_boards/')
+const personalListBoardController = require('../../../controllers/personal_projects/personal_list_boards/personal_list_board')
 
 const personalListsController = require('../../../controllers/personal_projects/personal_list_boards/personal_list')
 

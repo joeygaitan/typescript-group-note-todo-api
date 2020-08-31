@@ -1,14 +1,13 @@
 export {}
-const personalListBoardModels = require('../../../models/personal_projects/personal_list_boards')
+const personalListBoardModels = require('../../../models/personal_projects/personal_list_boards/personal_list_boards')
 
 function getAllListBoards (req:any, res:any, next:any) {
     let user_id = req.claim.user_id
-    
+    console.log(user_id)
     if (!user_id) throw {status:401, message:"Unauthorized Please login"}
-
+    console.log(req.params.project_id)
     return personalListBoardModels.getAllListBoardsQuery(user_id,Number(req.params.project_id))
     .then((data:any)=>{
-
         res.sendStatus(200).send(data)
     })
     .catch((err:any)=>{

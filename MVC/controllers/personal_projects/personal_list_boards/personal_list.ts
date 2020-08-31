@@ -1,6 +1,6 @@
 export {}
 
-const personalListModels = require('../../../models/personal_projects/personal_list_boards')
+const personalListModels = require('../../../models/personal_projects/personal_list_boards/personal_list')
 
 function getAllListItems (req:any, res:any, next:any) {
     let user_id = req.claim.user_id
