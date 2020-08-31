@@ -37,7 +37,7 @@ function addOneListItem (req:any, res:any, next:any) {
     
     if (!user_id) throw {status:401, message:"Unauthorized Please login"}
     
-    return personalListModels.addOneListItemQuery(user_id, Number(req.params.project_id),Number(req.params.board_id))
+    return personalListModels.addOneListItemQuery(user_id, Number(req.params.project_id), req.body)
     .then((data:any)=>{
 
         res.sendStatus(201).send(data)
