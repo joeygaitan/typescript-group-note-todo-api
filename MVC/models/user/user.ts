@@ -9,7 +9,7 @@ function getPersonalData (id:number) {
     }
 
     return db('users')
-    .select('username','first_name','last_name', 'gender','bio', 'email', "id")
+    .select('username','firstname','lastname', 'gender','bio', 'email', "id")
     .where('id', id)
     .first()
 }
@@ -22,14 +22,14 @@ function getUser (id:number, user_id:number) {
     if (!user_id || typeof user_id !== "number") throw {status:401, message:"user id isn't there or it isn't a number"} 
     // select users and personal_todos
     return db('users')
-    .select('first_name','last_name','username','email','age', 'bio','gender','active')
+    .select('firstname','lastname','username','email','age', 'bio','gender','active')
     .where('id', user_id)
 }
 
 function getUsers(username:string) {
     console.log(username)
     return db('users')
-    .select('first_name','last_name','username','email','age', 'bio','gender','active')
+    .select('firstname','lastname','username','email','age', 'bio','gender','active')
     // .whereRaw('username LIKE \'%??%\'', [username])
     .where('username', 'LIKE', `%${username}%`)
 }
@@ -77,6 +77,22 @@ function changePassword(id:number, username:string, password:string, newPassword
 
         // return/continue promise
         return user
+    })
+}
+
+function changeEmail (username:string, newEmail:string) {
+
+    return signUpModel.getOneByEmail(username)
+    .then((data:any)=>{
+        if (data) {
+            throw {status: 401, message:"email already taken"}
+        }
+
+        return db('users')
+        .where('username', username)
+        .update({
+            email:newEmail
+        })
     })
 }
 

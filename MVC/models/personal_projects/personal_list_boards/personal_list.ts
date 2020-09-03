@@ -8,11 +8,12 @@ function getAllListItemsQuery(user_id:number, project_id:number, personal_list_b
     .where('project_id', project_id)
 }
 
-function getOneListItemQuery(user_id:number, personal_list_board_id:number, id:number) {
+function getOneListItemQuery(user_id:number, project_id:any, personal_list_board_id:number, id:number) {
     return db('personal_lists')
     .where('user_id', user_id)
     .where('personal_list_board_id', personal_list_board_id)
     .where('id', id)
+    .where('project_id', project_id)
 }
 
 interface listItem {
@@ -34,8 +35,8 @@ function addOneListItemQuery(user_id:number, project_id:any, personal_list_board
     })
 }
 
-function updateOneListItemQuery (user_id:number, personal_list_board_id:number, id:number, body:listItem) {
-    return getOneListItemQuery(user_id, personal_list_board_id, id)
+function updateOneListItemQuery (user_id:number, project_id:number, personal_list_board_id:number, id:number, body:listItem) {
+    return getOneListItemQuery(user_id, project_id, personal_list_board_id, id)
     .then((data:any)=>{
 
         return db('personal_lists')
@@ -51,11 +52,12 @@ function updateOneListItemQuery (user_id:number, personal_list_board_id:number, 
     })
 }
 
-function removeOneListItemQuery(user_id:number, personal_list_board_id:number, id:number) {
+function removeOneListItemQuery(user_id:number, project_id:number, personal_list_board_id:number, id:number) {
     return db('personal_lists')
     .where('user_id', user_id)
     .where('personal_list_board_id', personal_list_board_id)
     .where('id', id)
+    .where('project_id', project_id)
     .del()
 }
 

@@ -26,7 +26,7 @@ function getOneByEmail (email:string) {
 }
 
 //create the user
-function createUser(username:string,password:string, email:string, firstname:string,lastname:string){
+function createUser(username:string,password:string, firstname:string,lastname:string, email:string){
    //check if user is inside of users table by looking for a username. The query returns a promise and it worked
     return getOneByUserName(username)
     .then((data:any)=>{
@@ -49,7 +49,12 @@ function createUser(username:string,password:string, email:string, firstname:str
     .then((hashedPassword:string)=>{
         
         return (db('users')
-        .insert({username, password: hashedPassword})
+        .insert({
+            firstname,
+            lastname,
+            email,
+            username, 
+            password: hashedPassword})
         )
     })
     .then(([data]:any)=>{

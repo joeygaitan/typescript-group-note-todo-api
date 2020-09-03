@@ -98,7 +98,6 @@ function updateAccount (req:any,res:any,next:any) {
 
     return userModels.updateAccount(id, req.body)
     .then((data:any)=>{
-        delete data[0].id
         delete data[0].password
         delete data[0].personalsecret1
         delete data[0].personalsecret2

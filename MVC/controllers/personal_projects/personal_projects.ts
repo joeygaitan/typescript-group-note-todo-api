@@ -10,8 +10,8 @@ function getAllPersonalProjects (req:any,res:any,next:any) {
 
     return personal_projectsModels.getAllPersonalProjectsQuery(id)
     .then((data:any)=>{
-
-        res.sendStatus(200).send(data)
+        console.log("get all")
+        res.status(200).send(data)
     })
     .catch((err:any)=>{
         console.log("something went wrong with getting all personal projects. Possibly wrong url?", err)
@@ -26,7 +26,7 @@ function getOnePersonalProject (req:any,res:any,next:any) {
     return personal_projectsModels.getOnePersonalProjectQuery(user_id, Number(req.params.id))
     .then((data:any)=>{
 
-        res.sendStatus(200).send(data)
+        res.status(200).send(data)
     })
     .catch((err:any)=>{
         console.log("error getting one user. Possibly invalid id was given in the parameters?", err)
@@ -41,7 +41,7 @@ function addOnePersonalProject (req:any,res:any,next:any) {
     return personal_projectsModels.addOnePersonalProjectQuery(user_id, req.body)
     .then((data:any)=>{
         
-        res.sendStatus(201).send(data)
+        res.status(201).send(data)
     })
     .catch((err:any)=>{
         console.log("failed to add one. Possibly a missing or extra field?", err)
@@ -56,7 +56,7 @@ function updateOnePersonalProject (req:any, res:any, next:any) {
     return personal_projectsModels.updateOnePersonalProjectQuery(Number(req.params.id), user_id, req.body)
     .then((data:any)=>{
         
-        res.sendStatus(201).send(data)
+        res.status(201).send(data)
     })
     .catch((err:any)=>{
         console.log("error updating personal_project", err)
@@ -70,7 +70,7 @@ function removeOnePersonalProject (req:any, res:any, next:any) {
 
     return personal_projectsModels.removeOnePersonalProjectQuery(Number(req.params.id))
     .then((data:any)=>{
-        res.sendStatus(201).send(data)
+        res.status(201).send(data)
     })
     .catch((err:any)=>{
         console.log("failed to delete a personal project", err)

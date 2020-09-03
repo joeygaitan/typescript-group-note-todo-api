@@ -3,6 +3,7 @@ const db = require('../../../db/knex')
 
 function getAllPersonalProjectsQuery(id:number) {
     return db('personal_projects')
+    .select('id', 'private', 'title', 'updated_at')
     .where('user_id', id)
 }
 

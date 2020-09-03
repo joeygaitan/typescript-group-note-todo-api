@@ -4,12 +4,13 @@ import * as Knex from "knex";
 export async function up(knex: Knex): Promise<any> {
     return knex.schema.createTable('users', (table)=>{
         table.increments('id').primary();
-        table.string('firstname');
-        table.string('lastname');
-        table.string('username').notNullable();
-        table.string('email');
+        table.string('firstname', 30);
+        table.string('lastname', 30);
+        table.string('username', 20).notNullable();
+        table.string('email', 40);
         table.string('password').notNullable();
-        table.integer('age');
+        table.boolean('display_username');
+        table.integer('age', 140);
         table.string('bio');
         table.string('gender');
         table.string('personalsecret1');
