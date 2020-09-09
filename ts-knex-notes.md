@@ -23,5 +23,7 @@ table.foreign('user_id').references('users.id').onUpdate('CASCADE').onDelete('CA
 ### run your seeds or update your database with seeds
 ```knex seed:run```
 
-### I recommend this command
+### I recommend this command since when you migrate:latest will increment the ids...
 ```knex migrate:rollback && knex migrate:latest && knex seed:run```
+
+

@@ -4,12 +4,8 @@
 1. Figure out what to return after you sign up?
 2. Figure out how to encrypt the user information so nobody can access their information if the database is compromised
 3. Salt the passwords of the users
-4. debate allowing the user to get their own password
-5. fix the get personal information route select option in the user models
-6. add in secrets when signing up? or add in a new route for secrets
-7. get a specific search for the personal_todos
-8. debate making a head_personal_todo table
-
+4. make a route where users can request to make a route, and moderator can make one
+5. make a moderator user who can delete peoples accounts, and remove users posts, putting them on probation period where they can only view posts, and work on their personal projects.........
 ## backlog
 
 1. hash the secrets, then have the user guess them if they get them right then they can change the password if they remember the secrets
