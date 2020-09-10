@@ -9,7 +9,7 @@ function getAllPersonalProjectsQuery(id:number) {
 
 function getOnePersonalProjectQuery(user_id:number, id:number){
     return db('personal_projects')
-    .select('title', 'private')
+    .select('title', 'private', 'id')
     .where('user_id', user_id)
     .where('id', id)
 }
